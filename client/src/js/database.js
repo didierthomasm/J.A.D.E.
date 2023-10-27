@@ -1,7 +1,7 @@
 import {openDB} from 'idb';
 
 export const initdb = async () => {
-  const jateDb = await openDB('jate', 1, {
+  await openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
         console.log('jate database already exists');
@@ -34,19 +34,16 @@ export const putDb = async (content) => {
 export const getDb = async () => {
   try {
     const jateDb = await openDB('jate', 1);
-
     const trans = jateDb.transaction('jate', 'readonly');
-
     const store = trans.objectStore('jate');
-
-    const request = store.getAll();
-
-    const result = await request;
-
+    const result = await store.getAll();
     console.log('result', result);
-
-    return result;
+    if (result && result.length > 0) {
+      return result[0].content; // Return the content of the first entry.
+    }
+    return null; // Return null if no entries are found.
   } catch (err) {
     console.error('getDb not implemented', err)
   }
 };
+
