@@ -12,7 +12,7 @@ function generateCache(cacheName) {
     cacheName: cacheName,
     plugins: [
       new CacheableResponsePlugin({
-        statuses: [200],
+        statuses: [0, 200],
       }),
       new ExpirationPlugin({
         maxAgeSeconds: 30 * 24 * 60 * 60,
