@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = () => {
   return {
@@ -40,6 +41,11 @@ module.exports = () => {
             destination: path.join('assets', 'icons'),
           },
         ],
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: './favicon.ico', to: './favicon.ico' }
+        ]
       }),
     ],
     module: {
