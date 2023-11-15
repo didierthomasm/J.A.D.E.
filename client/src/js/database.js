@@ -38,10 +38,7 @@ export const getDb = async () => {
     const store = trans.objectStore('jate');
     const result = await store.getAll();
     console.log('result', result);
-    if (result && result.length > 0) {
-      return result[0].content; // Return the content of the first entry.
-    }
-    return null; // Return null if no entries are found.
+    return result?.value; // Change here to return the value.
   } catch (err) {
     console.error('getDb not implemented', err)
   }

@@ -4,6 +4,8 @@ J. A. T. E. is a cutting-edge text editor designed for developers.
 It's equipped with features like JavaScript syntax highlighting and persistent storage, 
 ensuring you never lose your work. Made with love, J.A.T.E promises an enhanced coding experience for all its users.
 
+![J.A.T.E.](./client/src/images/ss.png)
+
 ## Table of Contents 📚
 
 - [Features](#features-)
